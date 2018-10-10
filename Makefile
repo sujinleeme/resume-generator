@@ -8,19 +8,31 @@ endif
 
 DATE=$(shell date +%F)
 
-ifeq ($(OS),Windows_NT)
-    RM = cmd //C del //Q //F
-    RRM = cmd //C rmdir //Q //S
+ifeq ($(shell echo "check_quotes"),"check_quotes")
+   WINDOWS := yes
 else
-    RM = rm -rf
-    RRM = rm -f -r
+   WINDOWS := no
+endif
+
+ifeq ($(WINDOWS),yes)
+   mkdir = mkdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+   cp = cp $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+   rm = $(wordlist 2,65535,$(foreach FILE,$(subst /,\,$(1)),& del $(FILE) > nul 2>&1)) || (exit 0)
+   rmdir = rmdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+   echo = echo $(1)
+else
+   mkdir = mkdir -p $(1)
+   cp = cp -r $(1)
+   rm = rm $(1) > /dev/null 2>&1 || true
+   rmdir = rmdir $(1) > /dev/null 2>&1 || true
+   echo = echo "$(1)"
 endif
 
 all: build pdf
 
 build:
-	mkdir -p out
-	cp -r static/ out/static/
+	$(mkdir, $(OUPUT_DIR))
+	$(cp, $(static/ out/static/))
 
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o ./out/resume.html
 	pandoc --section-divs -s ./content/letter.md -H ./templates/header.html -c static/letter.css -o ./out/letter.html
@@ -38,10 +50,10 @@ gh-page:
 
 deploy: build
 	@echo "Cleaning $(BUILD_DIR)"
-	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o ./index.html
+	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout gh-pages
 	-rsync -a --delete --exclude=.* --exclude=.git --exclude=static/* index.html .
-	$(RM) out content/ bin/ templates/ installation.md Makefile README.md
+	$(rm, $(out content/ bin/ templates/ installation.md Makefile README.md))
 	-git add index.html static
 	-git add -u
 	-git commit -m 'Automatic build commit on $(DATE).'
