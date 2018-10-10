@@ -1,4 +1,5 @@
 # Resume Generator
+> Forked from https://github.com/epsalt/resume-builder.git
 
 Resume, cover letter, and reference list builder. Converts from
 `markdown` content files to `html` and `pdf` using Pandoc and
@@ -32,6 +33,8 @@ connection with the depiction of tobacco products.
 - Run `make all` to build the `html` and `pdf` output documents to
   the `out` directory
 - Run `make build` to build just the `html` documents
+- Run `make gh-pages` to create gh-pages in local and remote branches
+- Run `make deploy` to deploy `index.html(resume.html)` to gh-pages
 
 [resume-html]: https://s3-us-west-2.amazonaws.com/epsalt-resume-builder/resume.html
 [resume-pdf]: https://s3-us-west-2.amazonaws.com/epsalt-resume-builder/resume.pdf
