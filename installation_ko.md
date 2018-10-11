@@ -202,13 +202,7 @@ $ make gh-pages
 git checkout -b gh-pages
 M       Makefile
 M       installation.md
-Switched to a new branch 'gh-pages'
-git push --set-upstream origin gh-pages
-Total 0 (delta 0), reused 0 (delta 0)
-remote:
-remote: Create a pull request for 'gh-pages' on GitHub by visiting:
-remote:      https://github.com/sujinleeme/resume-maker/pull/new/gh-pages
-remote:
+[....]
 To https://github.com/sujinleeme/resume-maker.git
  * [new branch]      gh-pages -> gh-pages
 Branch 'gh-pages' set up to track remote branch 'gh-pages' from 'origin'.
@@ -220,5 +214,14 @@ Your branch is up to date with 'origin/master'.
 ```
 
 5. 이제 gh-pages 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 웹사이트가 배포됩니다.
+
+```
+Cleaning
+[....]
+To https://github.com/sujinleeme/resume-maker.git
+   48ef1b2..e673f27  gh-pages -> gh-pages
+git checkout master
+Switched to branch 'master'
+```
 
 `https://[사용자 이름].github.io/my-resume/` 주소로 들어가서 내용이 잘 반영되었는지 확인해보세요.
