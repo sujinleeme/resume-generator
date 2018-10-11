@@ -5,6 +5,8 @@ STATIC_DIRS = static/ out/static/
 HTML_DIR = $(OUPUT_DIR)/html/
 PDF_DIR = $(OUPUT_DIR)/pdf/
 DEPLOY_BRANCH = gh-pages
+DEPLOY_DELETE_DIRS = out content/ bin/ templates/ installation.md Makefile README.md
+
 ifndef CURRENT_BRANCH
 CURRENT_BRANCH = $(error Could not get current branch.)
 endif
@@ -64,7 +66,7 @@ deploy: build
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout ${DEPLOY_BRANCH}
 	-rsync -a --delete --exclude=.* --exclude=.git --exclude=static/* index.html .
-	${rm} out content/ bin/ templates/ installation.md Makefile README.md
+	$(call rm, DEPLOY_DELETE_DIRS)
 	-git add index.html static
 	-git add -u
 	-git commit -m 'Automatic build commit on $(DATE).'
