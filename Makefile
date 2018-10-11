@@ -5,8 +5,8 @@ STATIC_DIRS = static/ out/static/
 HTML_DIR = $(OUPUT_DIR)/html/
 PDF_DIR = $(OUPUT_DIR)/pdf/
 DEPLOY_BRANCH = gh-pages
-DEPLOY_DELETE_DIRS = out content/ bin/ templates/ installation.md Makefile README.md LICENSE.md installation_ko.md
-
+DEPLOY_DELETE_DIRS = out content bin templates
+DEPLOY_DELETE_FILES = Makefile README.md LICENSE.md installation_ko.md
 ifndef CURRENT_BRANCH
 CURRENT_BRANCH = $(error Could not get current branch.)
 endif
@@ -29,9 +29,8 @@ else
    mkdir = mkdir -p $(1)
    cp = cp -r $(1)
    rm = rm -rf $(1) > /dev/null 2>&1 || true
-   rmdir = rmdir $(1) > /dev/null 2>&1 || true
+   rmdir = rm -rf $(1) > /dev/null 2>&1 || true
    echo = echo "$(1)"
-   phantomjs = phantomjs $(1)
 
 endif
 
@@ -65,7 +64,8 @@ deploy:
 	@echo "Cleaning $(BUILD_DIR)"
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout ${DEPLOY_BRANCH}
-	$(call rm, $(DEPLOY_DELETE_DIRS))
+	$(call rmdir, $(DEPLOY_DELETE_DIRS))		
+	$(call rm, $(DEPLOY_DELETE_FILES))
 	-git add index.html static
 	-git add -u
 	-git commit -m 'Automatic build commit on $(DATE).'
