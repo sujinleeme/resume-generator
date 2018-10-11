@@ -65,7 +65,6 @@ deploy:
 	@echo "Cleaning $(BUILD_DIR)"
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout ${DEPLOY_BRANCH}
-	-rsync -a --delete --exclude=.* --exclude=.git --exclude=static/* index.html .
 	$(call rm, $(DEPLOY_DELETE_DIRS))
 	-git add index.html static
 	-git add -u
