@@ -40,8 +40,8 @@ all: build pdf
 build:
 	$(call mkdir, $(OUPUT_DIR))
 	$(call cp, $(STATIC_DIRS))
-	${mkdir} ./${HTML_DIR}
-	${mkdir} ./${PDF_DIR}
+	$(call mkdir, ./$(HTML_DIR))
+	$(call makdir, ./$(PDF_DIR))
 
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o ./${HTML_DIR}resume.html
 	pandoc --section-divs -s ./content/letter.md -H ./templates/header.html -c static/letter.css -o ./${HTML_DIR}letter.html
