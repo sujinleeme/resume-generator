@@ -63,7 +63,7 @@ deploy: build
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout gh-pages
 	-rsync -a --delete --exclude=.* --exclude=.git --exclude=static/* index.html .
-	$(rm, $(out content/ bin/ templates/ installation.md Makefile README.md))
+	${rm} out content/ bin/ templates/ installation.md Makefile README.md
 	-git add index.html static
 	-git add -u
 	-git commit -m 'Automatic build commit on $(DATE).'
