@@ -69,7 +69,7 @@ deploy: build
 	-git add -u
 	-git commit -m 'Automatic build commit on $(DATE).'
 	git push
-	git checkout ${CURRENT_BRANCH}
+	git checkout master
 
 clean:
 	${rm} ${OUPUT_DIR}
