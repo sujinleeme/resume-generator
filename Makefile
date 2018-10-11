@@ -4,6 +4,7 @@ OUPUT_DIR = out
 STATIC_DIRS = static/ out/static/
 HTML_DIR = $(OUPUT_DIR)/html/
 PDF_DIR = $(OUPUT_DIR)/pdf/
+DEPLOY_BRANCH = gh-pages
 ifndef CURRENT_BRANCH
 CURRENT_BRANCH = $(error Could not get current branch.)
 endif
@@ -50,18 +51,18 @@ pdf: build
 	phantomjs bin/rasterize.js ${HTML_DIR}letter.html ${PDF_DIR}letter.pdf 0.8
 
 gh-pages:
-	git checkout -b gh-pages 
-	git push --set-upstream origin gh-pages
+	git checkout -b ${DEPLOY_BRANCH}
+	git push --set-upstream origin ${DEPLOY_BRANCH}
 	git checkout ${CURRENT_BRANCH}
 
 del-gh-pages:
-	git push --delete origin gh-pages
-	git push -d gh-pages
+	git push --delete origin ${DEPLOY_BRANCH}
+	git branch -D ${DEPLOY_BRANCH}
 
 deploy: build
 	@echo "Cleaning $(BUILD_DIR)"
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
-	git checkout gh-pages
+	git checkout ${DEPLOY_BRANCH}
 	-rsync -a --delete --exclude=.* --exclude=.git --exclude=static/* index.html .
 	${rm} out content/ bin/ templates/ installation.md Makefile README.md
 	-git add index.html static
