@@ -12,6 +12,9 @@ inferred. No person or entity associated with this repo received
 payment or anything of value, or entered into any agreement, in
 connection with the depiction of tobacco products.
 
+## How to use (for beginners)
+- [Korean](installation_ko.md)
+
 ## Examples
 
 - Resume: [html][resume-html], [pdf][resume-pdf]

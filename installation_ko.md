@@ -1,20 +1,20 @@
-# resume-maker
+# Resume Maker 사용법 : 한글
 
-마크다운으로 이력서 작성를 작성합니다.
+본 Resume Maker 리퍼지토리를 활용해 마크다운으로 이력서 작성하고 깃허브 페이지(GitHub Pages)에 배포하는 방법을 소개합니다.
 
 ## 준비
+* Git/GitHub
 로컬 컴퓨터에 Git/GitHub이 설치와 설정이 되어 있는지 확인합니다.
-코드 에디터로는 마이크로소프트 사의 비주얼 스튜디오 코드를 추천합니다.
+설치가 되어 있지 않다면 [Pro GitBook 한국어 튜토리얼](https://git-scm.com/book/ko/v2) 1-6 장까지 참고해 설치를 완료합니다.
 
-* 참고
-  * [Pro GitBook 한국어 튜토리얼](https://git-scm.com/book/ko/v2)
+* 코드 에디터
+마크다운 문법을 작성하고 미리보기 할 수 있는 코드 에디터가 필요합니다. 마이크로소프트 사의 [비주얼 스튜디오 코드](https://code.visualstudio.com)는 무료이며, 마크다운 미리보기 기능이 있어 이를 추천합니다.
 
 ## 문서 작성 도구
-* [Pandoc 2.x](https://pandoc.org)
-* [Phantomjs](http://phantomjs.org/download.html)
+이 프로그램은 [Pandoc 2.x](https://pandoc.org), [Phantomjs](http://phantomjs.org/download.html)을 사용해 이력서 pdf와 html 문서를 생성합니다.
 
-## 도구 설명
-### Pandoc
+### 도구 설명
+#### Pandoc
 존 팩프랜드(John Macfarlane)가 하스켈 언어로 제작한 오픈 소스로 하나의 문서를 여러 다른 형태의 문서로 변환하는 유틸리티입니다. Pandoc(판독)으로 마크다운(Markdown), HTML, LaTeX, Word docx, epub 등 다양한 형식으로 문서를 변환할 수 있습니다.
 
 ### Markdown
