@@ -1,4 +1,4 @@
-# Resume Maker 사용법 : 한글
+# Resume Generator 사용법 : 한글
 
 본 Resume Maker 리퍼지토리를 활용해 마크다운으로 이력서 작성하고 깃허브 페이지(GitHub Pages)에 배포하는 방법을 소개합니다.
 
@@ -60,6 +60,7 @@ GuiWin32 [다운로드 페이지](https://sourceforge.net/projects/gnuwin32/)에
 
 ```
 > path
+PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Pandoc\;C:\Ruby24-x64\bin;C:\Users\sujin\AppData\Local\Microsoft\WindowsApps;C:\Users\sujin\AppData\Local\Programs\Microsoft VS Code\bin
 ```
 
 GuiWin32 설치 경로를 확인한 후 `setx` 명령어로 환경 변수 설정 경로를 설정합니다.
@@ -132,7 +133,7 @@ $ sudo tlmgr install collection-fontsrecommended
 $ tex -v
 TeX 3.14159265 (TeX Live 2018)
 ```
-### 4. phantomjs 설치하기
+#### 4. phantomjs 설치하기
 
 ```
 $ brew cask install phantomjs
@@ -148,42 +149,42 @@ $ phantomjs -v
 ## 내 GitHub 리퍼지토리에 올리고 배포하기
 
 이 리퍼지토리를 보일러플레이트(boilerplate)로 사용해 GitHub 페이지에 호스팅할 수 있습니다.
-`make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 할 수 있습니다. 아래 `resume-maker` 레파지토리 이름을 `my-resume`로 바꾸고, GitHub Pages에 이력서 웹 사이트를 호스팅 하는 방법을 소개합니다.
+`make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 할 수 있습니다. 아래 `resume-generator` 레파지토리 이름을 `my-resume`로 바꾸고, GitHub Pages에 이력서 웹 사이트를 호스팅 하는 방법을 소개합니다.
 
 1. 리퍼지토리를 클론합니다.
 ```
-$ git clone https://github.com/sujinleeme/resume-maker.git
+$ git clone https://github.com/sujinleeme/resume-generator.git
 ```
 
-2. 전 하위 폴더로 들어가 현재 로컬 폴더 이름인 `resume-maker`를 `my-resume`로 바꿉니다. 리퍼지토리 이름이 `my-resume`이기 때문에 편의상 폴더 이름을 바꾸겠습니다.
+2. 전 하위 폴더로 들어가 현재 로컬 폴더 이름인 `resume-generator`를 `my-resume`로 바꿉니다. 리퍼지토리 이름이 `my-resume`이기 때문에 편의상 폴더 이름을 바꾸겠습니다.
 
 * Windows
 ```
 $ cd ..
-$ Rename resume-maker [프로젝트 이름]
+$ Rename resume-generator [프로젝트 이름]
 ```
 * MacOSX
 ```
 $ cd ..
-$ mv resume-maker [프로젝트 이름]
+$ mv resume-generator [프로젝트 이름]
 ```
 
 3. 프로젝트 폴더로 들어가 숨김 폴더인 `.git`을 지우고 초기화 합니다.
 * Windows
 ```
-> cd resume-maker
+> cd resume-generator
 > del .git
 > git init
 ```
 
 * MacOSX
 ```
-$ cd resume-maker
+$ cd resume-generator
 $ rm -rf .git
 $ git init
 ```
 
-4. [깃허브 홈페이지](https://github.com/sujinleeme/resume-maker)에서 `my-resume`라는 빈 리퍼지토리를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. 
+4. [깃허브 홈페이지](https://github.com/sujinleeme/resume-generator)에서 `my-resume`라는 빈 리퍼지토리를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. 
 
 ```
 $ git remote add origin https://github.com/[내 사용자 이름]/my-resume.git
@@ -203,7 +204,7 @@ git checkout -b gh-pages
 M       Makefile
 M       installation.md
 [....]
-To https://github.com/sujinleeme/resume-maker.git
+To https://github.com/sujinleeme/resume-generator.git
  * [new branch]      gh-pages -> gh-pages
 Branch 'gh-pages' set up to track remote branch 'gh-pages' from 'origin'.
 git checkout master
@@ -218,7 +219,7 @@ Your branch is up to date with 'origin/master'.
 ```
 Cleaning
 [....]
-To https://github.com/sujinleeme/resume-maker.git
+To https://github.com/sujinleeme/resume-generator.git
    48ef1b2..e673f27  gh-pages -> gh-pages
 git checkout master
 Switched to branch 'master'
