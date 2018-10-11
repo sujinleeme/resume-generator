@@ -1,7 +1,9 @@
 #!make
 CURRENT_BRANCH = $(shell git name-rev --name-only HEAD)
 OUPUT_DIR = out
-BUILD_DIR = public
+STATIC_DIRS = static/ out/static/
+HTML_DIR = $(OUPUT_DIR)/html/
+PDF_DIR = $(OUPUT_DIR)/pdf/
 ifndef CURRENT_BRANCH
 CURRENT_BRANCH = $(error Could not get current branch.)
 endif
@@ -26,22 +28,26 @@ else
    rm = rm $(1) > /dev/null 2>&1 || true
    rmdir = rmdir $(1) > /dev/null 2>&1 || true
    echo = echo "$(1)"
+   phantomjs = phantomjs $(1)
+
 endif
 
 all: build pdf
 
 build:
-	$(mkdir, $(OUPUT_DIR))
-	$(cp, $(static/ out/static/))
+	$(call mkdir, $(OUPUT_DIR))
+	$(call cp, $(STATIC_DIRS))
+	${mkdir} ./${HTML_DIR}
+	${mkdir} ./${PDF_DIR}
 
-	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o ./out/resume.html
-	pandoc --section-divs -s ./content/letter.md -H ./templates/header.html -c static/letter.css -o ./out/letter.html
-	pandoc --section-divs -s ./content/references.md -H ./templates/header.html -c static/references.css -o ./out/references.html
+	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o ./${HTML_DIR}resume.html
+	pandoc --section-divs -s ./content/letter.md -H ./templates/header.html -c static/letter.css -o ./${HTML_DIR}letter.html
+	pandoc --section-divs -s ./content/references.md -H ./templates/header.html -c static/references.css -o ./${HTML_DIR}references.html
 
 pdf: build
-	phantomjs bin/rasterize.js out/resume.html out/resume.pdf 0.7
-	phantomjs bin/rasterize.js out/references.html out/references.pdf 0.8
-	phantomjs bin/rasterize.js out/letter.html out/letter.pdf 0.8
+	phantomjs bin/rasterize.js ${HTML_DIR}resume.html ${PDF_DIR}resume.pdf 0.7
+	phantomjs bin/rasterize.js ${HTML_DIR}references.html ${PDF_DIR}references.pdf 0.8
+	phantomjs bin/rasterize.js ${HTML_DIR}letter.html ${PDF_DIR}letter.pdf 0.8
 
 gh-page:
 	git checkout -b gh-pages 
@@ -61,4 +67,4 @@ deploy: build
 	git checkout ${CURRENT_BRANCH}
 
 clean:
-	$(RM) $(OUPUT_DIR)
+	${rm} ${OUPUT_DIR}
