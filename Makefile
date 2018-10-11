@@ -49,10 +49,14 @@ pdf: build
 	phantomjs bin/rasterize.js ${HTML_DIR}references.html ${PDF_DIR}references.pdf 0.8
 	phantomjs bin/rasterize.js ${HTML_DIR}letter.html ${PDF_DIR}letter.pdf 0.8
 
-gh-page:
+gh-pages:
 	git checkout -b gh-pages 
 	git push --set-upstream origin gh-pages
 	git checkout ${CURRENT_BRANCH}
+
+del-gh-pages:
+	git push --delete origin gh-pages
+	git push -d gh-pages
 
 deploy: build
 	@echo "Cleaning $(BUILD_DIR)"
