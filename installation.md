@@ -62,13 +62,13 @@ GuiWin32 [다운로드 페이지](https://sourceforge.net/projects/gnuwin32/)에
 > path
 ```
 
-GuiWin32 설치 경로를 확인한 후 환경 변수 설정 경로를 설정합니다.
+GuiWin32 설치 경로를 확인한 후 `setx` 명령어로 환경 변수 설정 경로를 설정합니다.
 
 ```
 > setx /M PATH "%PATH%;C:\[경로...]\bin"
 ```
 
-`C:\Program Files (x86)`라면 `setx /M PATH "%PATH%;C:\Program Files (x86)\bin`가 되겠습니다. 끝에 바이너리 폴더인 `\bin`를 추가하는 것을 잊지 마세요. 환경 변수가 잘 설정되었는지 확인합니다.
+ 예를 들면 `C:\Program Files (x86)`라면 `setx /M PATH "%PATH%;C:\Program Files (x86)\bin`가 되겠습니다. 끝에 바이너리 폴더인 `\bin`를 추가하는 것을 잊지 마세요. 환경 변수가 잘 설정되었는지 다시 확인합니다. 맨 마지막 부분에 `C:\Program Files (x86)\GnuWin32\bin`가 추가되어 있는 것을 확인할 수 있을 것입니다.
 
 ```
 > path
@@ -83,30 +83,36 @@ GNU Make 3.81
 Copyright (C) 2006  Free Software Foundation, Inc.
 ```
 
-#### 4. node.js 와 npm 설치
-[Node.js 다운로드 페이지](http://nodejs.org/)에서 설치 파일을 다운 받고 설치를 완료합니다. 컴퓨터를 재부팅해야 node.js를 사용할 수 있습니다.
-
-콘솔에서 `node --version` 또는 `node -v` 명령어를 입력해 설치가 잘 되었는지 확인해봅시다.
-
-```
-> node --version
-v10.11.0
-```
-
-### 5. phantomjs 설치하기
-```
-> npm install -g phantomjs-prebuilt
-```
+### 4. phantomjs 설치하기
+[다운로드 페이지](http://phantomjs.org/download.html)에서 `phantomjs-2.1.1-windows.zip`을 다운받고 압축을 푼 다음 설치를 진행합니다. `phantomjs.exe` 파일을 실행합니다.
 
 ### MacOSX
 
-#### 1. Pandoc 설치하기
-콘솔에서 `brew install pandoc` 입력해 설치합니다. 
+#### 1. brew 설치
+MacOSX에서는 homebrew로 설치를 진행합니다. `brew -v`를 콘솔에 입력해 설치가 이미 되었는지 확인해보세요.
 
-### 2. BasicTeX 설치하기
-Te MacTeX 또는 ConTeXt Suite를 설치해 사용할 수 있습니다만, MacTeX의 용량이 크기 때문에, 저용량 버전인 BasicTeX를 설치하는 것이 좋습니다.
+```
+$ brew -v
+Homebrew 1.7.7
+```
 
-BasicTeX [다운로드 페이지](https://www.tug.org/mactex/morepackages.html)에서 BasicTeX.pkg 파일을 다운받아 설치합니다.
+설치가 되어 있지 않으면 아래 스크립트를 복사해 콘솔에 붙여 넣고 실행하세요.
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+#### 2. Pandoc 설치하기
+콘솔에서 `brew install pandoc` 입력해 설치합니다. `pandoc -v`를 콘솔에 입력해 설치가 잘 되었는지 확인해보세요.
+
+```
+$ pandoc -v
+pandoc 2.3.1
+```
+
+#### 3. BasicTeX 설치하기
+Te MacTeX 또는 ConTeXt Suite를 설치해 사용할 수 있습니다만, MacTeX의 용량이 크기 때문에, 저용량 버전인 BasicTeX를 설치하는 것이 좋습니다. BasicTeX를 설치하고 TeX 폰트 설치를 진행합니다.
+
+BasicTeX [다운로드 페이지](https://www.tug.org/mactex/morepackages.html)에서 `BasicTeX.pkg` 파일을 다운받아 설치합니다.
 
 콘솔을 열어 tlmgr를 업데이트 한 후 TeX 폰트를 설치합니다.
 ```
@@ -120,58 +126,37 @@ $ tlmgr install collection-fontsrecommended
 $ sudo tlmgr install collection-fontsrecommended
 ```
 
-콘솔에서 `tex --version` 또는 `tex -v` 명령어를 입력해 설치가 잘 되었는지 확인해봅시다.
+콘솔에서 `tex -v` 명령어를 입력해 설치가 잘 되었는지 확인해봅시다.
 
 ```
-$ tex --version
+$ tex -v
 TeX 3.14159265 (TeX Live 2018)
 ```
+### 4. phantomjs 설치하기
 
-### 보일러플레이트를 깃허브 리퍼지토리에 연결하기 
+```
+$ brew cask install phantomjs
+```
 
-이 리퍼지토리를 보일러플레이트(boilerplate)로 사용해 깃허브 페이지에 호스팅할 것입니다.
+`phantomjs -v`를 콘솔에 입력해 설치가 잘 되었는지 확인해보세요.
+
+```
+$ phantomjs -v
+2.1.1
+```
+
+## 내 GitHub 리퍼지토리에 올리고 배포하기
+
+이 리퍼지토리를 보일러플레이트(boilerplate)로 사용해 GitHub 페이지에 호스팅할 수 있습니다.
+`make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 할 수 있습니다. 아래 `resume-maker` 레파지토리 이름을 `my-resume`로 바꾸고, GitHub Pages에 이력서 웹 사이트를 호스팅 하는 방법을 소개합니다.
 
 1. 리퍼지토리를 클론합니다.
 ```
 $ git clone https://github.com/sujinleeme/resume-maker.git
 ```
 
-2. 프로젝트 폴더로 들어가 숨김 폴더인 `.git`을 지우세요.
-* Windows
-```
-$ cd resume-maker
-$ del .git
-```
+2. 전 하위 폴더로 들어가 현재 로컬 폴더 이름인 `resume-maker`를 `my-resume`로 바꿉니다. 리퍼지토리 이름이 `my-resume`이기 때문에 편의상 폴더 이름을 바꾸겠습니다.
 
-* MacOSX
-```
-$ cd resume-maker
-$ rm -rf .git
-```
-
-3. 깃을 초기화 합니다.
-```
-$ git init
-```
-
-4. 전체 브랜치 목록을 확인합니다. `master` 브랜치에서 `gh-pages`로 변경합니다. `gh-pages` 브랜치가 깃헙 페이지 배포 브랜치입니다.
-
-```
-$ git branch -all 
-$ git checkout -b gh-pages
-```
-
-5. 깃허브 홈페이지에서 빈 리퍼지토리를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. 
-
-```
-$ git remote add origin <your-new-github-repo-url>)
-$ git add .
-$ git commit -m "Add Resume Maker boilerplate"
-$ git push --set-upstream origin master
-```
-
-
-6. 이전 하위 폴더로 들어가 현재 로컬 폴더 이름인 `resume-maker`를 원하는 이름으로 바꿉니다.
 * Windows
 ```
 $ cd ..
@@ -183,29 +168,57 @@ $ cd ..
 $ mv resume-maker [프로젝트 이름]
 ```
 
-
-### 이력서 작성하기
-코드 에디터를 열고 `resume/index.md` 파일을 열고, 이력서 내용을 수정합니다.
-
+3. 프로젝트 폴더로 들어가 숨김 폴더인 `.git`을 지우고 초기화 합니다.
+* Windows
 ```
-$ code resume/index.md
-```
-
-작성이 끝난 후 콘솔에서 `make` 명령어를 입력해 여러 문서 파일을 생성합니다.
-
-```
-$ make
-```
-`output`디렉터리 내 `docx`, `html`, `pdf`, `rtf`, `tex`, `tuc` 파일 생성되고, 루트 디렉터리에 `index.html` 파일이 생성된 것을 확인할 수 있을 것입니다. `index.html` 파일은 깃허브 페이지로 배포되는 파일입니다.
-
-### 배포하기
-이제 생성된 `index.html`파일을 깃허브 페이지로 배포하겠습니다. `gh-pages` 브랜치를 생성하고 커밋 후 푸쉬합니다.
-
-```
-$ git checkout -b gh-pages
-$ git add . 
-$ git commit -m "커밋 메시지"
-$ git push
+> cd resume-maker
+> del .git
+> git init
 ```
 
-`https://[사용자 이름].github.io/[프로젝트 이름]/` 주소로 들어가서 내용이 잘 반영되었는지 확인해보세요.
+* MacOSX
+```
+$ cd resume-maker
+$ rm -rf .git
+$ git init
+```
+
+4. [깃허브 홈페이지](https://github.com/sujinleeme/resume-maker)에서 `my-resume`라는 빈 리퍼지토리를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. 
+
+```
+$ git remote add origin https://github.com/[내 사용자 이름]/my-resume.git
+$ git add .
+$ git commit -m "Add Resume Maker boilerplate"
+$ git push --set-upstream origin master
+```
+
+이제 전체 코드가 리퍼지토리에 푸쉬되어 반영되었을 것입니다.
+
+4. `make gh-pages` 명령어를 실행합니다. 자동으로 신규 gh-pages 라는 이름의 로컬/원격 브랜치가 생성됩니다.
+
+```
+$ make gh-pages
+
+git checkout -b gh-pages
+M       Makefile
+M       installation.md
+Switched to a new branch 'gh-pages'
+git push --set-upstream origin gh-pages
+Total 0 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'gh-pages' on GitHub by visiting:
+remote:      https://github.com/sujinleeme/resume-maker/pull/new/gh-pages
+remote:
+To https://github.com/sujinleeme/resume-maker.git
+ * [new branch]      gh-pages -> gh-pages
+Branch 'gh-pages' set up to track remote branch 'gh-pages' from 'origin'.
+git checkout master
+M       Makefile
+M       installation.md
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+```
+
+5. 이제 gh-pages 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 웹사이트가 배포됩니다.
+
+`https://[사용자 이름].github.io/my-resume/` 주소로 들어가서 내용이 잘 반영되었는지 확인해보세요.
