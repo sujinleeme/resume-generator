@@ -1,10 +1,10 @@
 ---
-pagetitle: 'Cover Letter - Daniel S. Marshall'
-author: 'Daniel S. Marshall'
+pagetitle: 'Cover Letter - My Name'
+author: 'My Name'
 date: 2017-01-01
 ---
 
-# Daniel S. Marshall
+# My Name
 ## Your Info {.heading-you .hide}
 Oakville, Ontario\
 905 849 0586\
@@ -43,4 +43,4 @@ Regards,
 
 ![](static/sig.png)
 
-Daniel S. Marshall
+My Name
