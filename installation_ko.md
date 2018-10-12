@@ -33,7 +33,7 @@ Pandoc에서 pdf를 생성할 때 LaTeX이 필요합니다. 이 프로그램에�
 ### Windows
 
 #### 1. Pandoc 설치하기
-Pandoc [다운로드](https://github.com/jgm/pandoc/releases/tag/2.2.1)에서 운영 체제에 맞는 msi 파일을 다운받고 설치하세요. 
+[Pandoc 다운로드 페이지](https://github.com/jgm/pandoc/releases/tag/2.2.1)에서 운영 체제에 맞는 zip 파일을 다운받고 설치하세요. 
 32bit 운영 체제라면 `pandoc-2.3.1-windows-i386.zip` 파일을 다운받으면 됩니다.
 
 내 컴퓨터가 32bit 인지 64bit 인지 모른다면, `(Settings) > 시스템(System)`에서 컴퓨터 종류(System Type)에서 확인할 수 있습니다.
@@ -96,10 +96,10 @@ Copyright (C) 2006  Free Software Foundation, Inc.
 
 `제어판(Settings) > 시스템(System) > 정보(About)`로 들어가 우측에 `시스템 정보(System Info) > 고급 시스템 설정(Advance system settings)`를 클릭합니다.  그리고 맨 아래에 `환경 변수(Environment Variables)`를 클릭합니다.
 
-`환경 변수(Environment Variables)` 에서 `000에 대한 사용자 변수(User variables for 000)` 항목 아래, `Path`를 클릭하고 `편집(Edit)` 버튼을 클릭합니다. `C:\Program Files (x86)\GnuWin32\bin`가 있는 것을 확인할 수 있을 것입니다. 여기서 `찾아보기(Browse)` 버튼을 클릭해 `GnuWin32`의 설치 경로를 선택합니다. 여기서 반드시 `GnuWin32\bin` 경로를 선택해야 합니다.
+`환경 변수(Environment Variables)` 에서 `000에 대한 사용자 변수(User variables for 000)` 항목 아래, `Path`를 클릭하고 `편집(Edit)` 버튼을 클릭합니다. `C:\Program Files (x86)\GnuWin32\bin`가 있는 것을 확인할 수 있을 것입니다. 여기서도 환경 변수를 추가할 수 있습니다. `찾아보기(Browse)` 버튼을 클릭해 `GnuWin32`의 설치 경로를 선택합니다. 여기서 반드시 `GnuWin32\bin` 경로를 선택해야 합니다.
 
 #### 3. phantomjs 설치하기
-[다운로드 페이지](http://phantomjs.org/download.html)에서 `phantomjs-2.1.1-windows.zip`을 다운받고 압축을 풉니다. 압축을 푼 `phantomjs-2.1.1-windows`폴더에 들어가 `phantomjs`를 복사해 (만약 이름이 `phantomjs-2.1.1-windows`라면 `phantomjs`로 변경하세요) `C:\Program Files (x86)`폴더에 붙여넣기 하세요.
+[phantomjs 다운로드 페이지](http://phantomjs.org/download.html)에서 `phantomjs-2.1.1-windows.zip`을 다운받고 압축을 풉니다. 압축을 푼 `phantomjs-2.1.1-windows`폴더에 들어가 `phantomjs`를 복사해 (만약 이름이 `phantomjs-2.1.1-windows`라면 `phantomjs`로 변경하세요) `C:\Program Files (x86)`폴더에 붙여넣기 하세요.
 
 이번에도 마찬가지로 환경변수 설정이 필요합니다.
 
