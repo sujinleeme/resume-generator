@@ -123,8 +123,7 @@ PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32
 
 ```
 > phantomjs --version
-GNU Make 3.81
-Copyright (C) 2006  Free Software Foundation, Inc.
+2.1.1
 ```
 
 #### 4. MiKTeX 설치하기 (옵션)
