@@ -60,7 +60,7 @@ del-gh-pages:
 	git push --delete origin ${DEPLOY_BRANCH}
 	git branch -D ${DEPLOY_BRANCH}
 
-deploy:
+deploy: build
 	@echo "Cleaning $(BUILD_DIR)"
 	pandoc --section-divs -s ./content/resume.md -H ./templates/header.html -c static/resume.css -o index.html
 	git checkout ${DEPLOY_BRANCH}
@@ -71,6 +71,12 @@ deploy:
 	-git commit -m 'Automatic build commit on $(DATE).'
 	git push
 	git checkout master
+
+commit: build
+	git checkout master
+	git add .
+	-git commit -m 'Automatic commit on $(DATE).'
+	git push
 
 clean:
 	${rm} ${OUPUT_DIR}
