@@ -58,10 +58,11 @@ Makefile 빌드 자동화 스크립트 파일을 사용해 명령어를 실행�
 
 먼저 `명령 프롬프트` 아이콘의 오른쪽 버튼을 클릭해 `관리자 권한으로 열기`를 선택해 프롬프트 창을 엽니다.
 
-`path` 명령어로 현제 환경 설정 변수를 확인합니다.
+`path` 명령어로 현재의 환경 설정 변수를 확인합니다.
 
 ```
 > path
+PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Pandoc\;C:\Ruby24-x64\bin;C:\Users\sujin\AppData\Local\Microsoft\WindowsApps;C:\Users\sujin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files
 ```
 
 GuiWin32 설치 경로를 확인한 후 `setx` 명령어로 환경 변수 설정 경로를 설정합니다. 끝에 바이너리 폴더인 `\bin`를 추가하는 것을 잊지 마세요. 
