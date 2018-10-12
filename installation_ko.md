@@ -199,11 +199,11 @@ $ git clone https://github.com/sujinleeme/resume-generator.git
 
 * Windows
 ```
-$ Rename resume-generator [프로젝트 이름]
+$ Rename resume-generator my-resume
 ```
 * MacOSX
 ```
-$ mv resume-generator [프로젝트 이름]
+$ mv resume-generator my-resume
 ```
 
 3. 프로젝트 폴더로 들어가 숨김 폴더인 `.git`을 지우고 초기화 합니다.
@@ -236,18 +236,16 @@ origin	https://github.com/[사용자 이름]/my-resume.git (fetch)
 origin	https://github.com/[사용자 이름]/my-resume.git (push)
 ```
 
-이 코드 전체를 리퍼지토리에 넣어봅시다.
+이 코드 커밋하고 푸쉬합니다.
 ```
 $ git add .
 $ git commit -m "Add Resume Maker boilerplate"
 $ git push --set-upstream origin master
 ```
-
-이제 전체 코드가 리퍼지토리에 푸쉬되어 반영되었을 것입니다.
 https://github.com/[사용자 이름]/my-resume 페이지로 가서 잘 올라갔는지 확인해보세요.
 
-5. 지금부터는 웹사이트 배포를 해볼 것입니다. 깃허브 페이지는 기본적으로 `gh-pages`에 푸쉬하면 GitHub Pages가 자동으로 배포됩니다.
-브랜치번경-추가-커밋-푸쉬 단계까지 git 명령어를 여러번 쳐야 합니다. 이 명령어 집합을 모아 Makefile에 정의했습니다.
+5. 지금부터는 웹사이트 배포를 해보겠습니다. 깃허브 페이지는 기본적으로 `gh-pages`에 푸쉬하면 GitHub Pages가 자동으로 배포됩니다.
+브랜치번경-추가-커밋-푸쉬 단계까지 git 명령어를 여러번 쳐야하는 번거로움이 있습니다. 때문에 이 명령어 집합을 모아 Makefile에 정의했습니다.
 
 먼저 배포 브랜치인 `gh-pages`를 만들어보겠습니다.
 `make gh-pages` 명령어를 실행하면 자동으로 신규 gh-pages 라는 이름의 로컬/원격 브랜치가 생성됩니다.
