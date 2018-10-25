@@ -1,0 +1,77 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 650px;
+    margin: 0 auto;
+    padding: 25px 50px;
+    text-align: left;
+    overflow: auto;
+}
+
+p, li {
+    font-size: 1.07em;
+    color: #4d4d4d;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+p {
+    margin: 0;
+    text-align: justify;
+}
+
+h1 {
+    float: left;
+    font-size: 3em;
+    margin: 23px 0 10px 0;
+    font-weight: normal;
+}
+
+h2 {
+    background: #fff;
+    color: #4d4d4d;
+    display: inline-block;
+    font-size: 1em;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    padding-right: 10px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.hide h2 {
+    display: none;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+.heading {
+    float: right;
+    margin: 15px 0 0 0;
+}
+
+.heading > p {
+    margin: 5px 0;
+    text-align: right;
+}
+
+.divider {
+    margin-top: 5px;
+    margin-bottom: -5px;
+    clear: left;
+    position: relative;
+} 
+
+.divider:after {
+    position: absolute;
+    left: 0;
+    top: 60%;
+    height: 1px;
+    background: #ccc;
+    content: "";
+    width: 100%;
+    z-index: 0;
+    display: block;
+}
