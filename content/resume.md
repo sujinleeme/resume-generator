@@ -1,6 +1,6 @@
 ---
-pagetitle: 'Resume - MyName'
-author: 'My Name'
+pagetitle: "Resume - MyName"
+author: "My Name"
 date: 2018-10-31
 ---
 
@@ -9,7 +9,7 @@ date: 2018-10-31
 ## Contact {.heading .hide}
 
 Seoul, Republic of Korea\
-82+ 010-1234-5678\
+82+ 010-3939-3686\
 yourname@gmail.com\
 
 ## Experience {.divider}
@@ -47,6 +47,22 @@ yourname@gmail.com\
 - Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet
 - Consectetur, adipisci velit, sed quia non numquam eius modi tempora
 - Incidunt ut labore et dolore magnam aliquam quaerat voluptatem
+
+## Projects {.divider}
+
+### My Project 1
+
+#### Sep 2005 - Apr 2009
+
+- Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet
+- Consectetur, adipisci velit, sed quia non numquam eius modi tempora
+
+### My Project 2
+
+#### Sep 2005 - Apr 2009
+
+- Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet
+- Consectetur, adipisci velit, sed quia non numquam eius modi tempora
 
 ## Education {.divider}
 
