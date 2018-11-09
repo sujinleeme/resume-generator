@@ -247,7 +247,7 @@ $ mv resume-generator my-resume
 
 ```
 > cd my-resume
-> del .git
+> rd /s /q "C:\<경로>\my-resume\.git"
 > git init
 ```
 
